@@ -5,11 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .inter-bold {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        font-variation-settings: "slnt" 0;
+      }
+      .inter {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+        font-variation-settings: "slnt" 0;
+      }
+    </style>
   </head>
-  <body class="w-full h-screen flex justify-center px-4 relative">
+  <body class="w-full h-screen flex justify-center px-4 relative inter">
     <div class="w-full h-screen max-w-7xl">
       <header class="mx-10 my-8 flex justify-between items-center">
-        <h1 class="font-bold text-4xl">W.</h1>
+        <h1 class="font-bold text-4xl inter-bold">W.</h1>
         <nav id="nav" class="bg-white">
           <button id="menuButton" class="sm:hidden">
             <img
