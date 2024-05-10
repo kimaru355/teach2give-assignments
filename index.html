@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="w-full h-screen flex justify-center p-4 relative">
+    <div class="w-full h-screen max-w-7xl">
+      <header class="mx-10 my-8 flex justify-between items-center">
+        <h1 class="font-bold text-4xl">W.</h1>
+        <nav id="nav" class="bg-white">
+          <button id="menuButton" class="sm:hidden">
+            <img
+              src="assets/images/icon-menu.svg"
+              alt="icon-menu"
+              class="sm:hidden"
+              id="openNav"
+            />
+            <img
+              src="assets/images/icon-menu-close.svg"
+              alt="icon-menu"
+              class="hidden sm:hidden"
+              id="closeNav"
+            />
+          </button>
+          <menu
+            class="hidden gap-4 p-4 text-xl font-semibold sm:flex"
+            id="menu"
+          >
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Categories</a></li>
+          </menu>
+        </nav>
+      </header>
+      <main class="flex flex-col gap-10 pb-10 justify-center items-center">
+        <div
+          class="flex flex-wrap gap-10 justify-center items-center sm:flex-nowrap"
+        >
+          <div class="flex flex-col">
+            <img
+              src="assets/images/image-web-3-desktop.jpg"
+              alt="image-web-3-desktop"
+              class=""
+            />
+            <div class="flex flex-wrap gap-4">
+              <h2 class="font-bold text-4xl">The Bright Future of Web 3.0?</h2>
+              <div class="">
+                <p>
+                  We dive into the next evolution of the web that claims to put
+                  the power of the platform back into the hands of the people.
+                  But is it really fulfilling its promise?
+                </p>
+                <button
+                  class="bg-red-500 text-white px-10 py-2 my-8 hover:bg-black"
+                >
+                  READ MORE
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#00001a] py-6 px-4 flex flex-col gap-6">
+            <h2 class="text-yellow-400 font-bold text-2xl">New</h2>
+            <div>
+              <h3 class="text-white font-bold text-lg">
+                Hydrogen VS Electric Cars
+              </h3>
+              <p class="text-slate-400">
+                Will Hydrogen-fueled cars ever catch up to EV's?
+              </p>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg">
+                The downside of AI industry
+              </h3>
+              <p class="text-slate-400">
+                What are the possible adverse effects of on-demand AI image
+                generation?
+              </p>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg">
+                Is VC Funding Drying Up?
+              </h3>
+              <p class="text-slate-400">
+                Private funding by VC farms is down 50% YOY. We take a look at
+                what that means.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div class="flex gap-4 h-min">
+            <img
+              class="h-32 w-auto"
+              src="assets/images/image-retro-pcs.jpg"
+              alt="image-retro-pcs"
+            />
+            <div class="flex flex-col gap-2">
+              <p class="text-slate-400 font-bold text-2xl">01</p>
+              <p class="font-bold text-black text-lg">Reviving Retro PCs</p>
+              <p>What happens when old PCs are given modern upgrades?</p>
+            </div>
+          </div>
+          <div class="flex gap-4 h-min">
+            <img
+              class="h-32 w-auto"
+              src="assets/images/image-top-laptops.jpg"
+              alt="image-top-laptops"
+            />
+            <div class="flex flex-col gap-2">
+              <p class="text-slate-400 font-bold text-2xl">02</p>
+              <p class="font-bold text-black text-lg">Top 10 Laptops of 2022</p>
+              <p>Our best picks for various needs and budgets</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <img
+              class="h-32 w-auto"
+              src="assets/images/image-gaming-growth.jpg"
+              alt="image-gaming-growth"
+            />
+            <div class="flex flex-col gap-2">
+              <p class="text-slate-400 font-bold text-2xl">03</p>
+              <p class="font-bold text-black text-lg">
+                The Growth of image-gaming-growth
+              </p>
+              <p>How the pandemic has separated fresh opportunities</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script>
+    const menuButton = document.querySelector("#menuButton");
+    const menu = document.querySelector("#menu");
+    const nav = document.querySelector("nav");
+    const openNav = document.querySelector("#openNav");
+    const closeNav = document.querySelector("#closeNav");
+    menuButton.addEventListener("click", () => {
+      nav.className = "fixed top-0 right-0 bg-white h-screen w-72 py-10 px-4";
+      menu.classList.remove("hidden");
+    });
+  </script>
+</html>
