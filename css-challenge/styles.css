@@ -269,25 +269,80 @@ header > nav > div {
 
 /* pricing section */
 #pricing {
-  padding: 0 10rem;
+  padding: 6rem 10rem;
+  color: #707070;
 }
 #pricing > h2 {
   font-size: 3rem;
   text-align: center;
+  padding-bottom: 1rem;
+  color: black;
 }
 #pricing > p {
   text-align: center;
+  padding-bottom: 4rem;
 }
 #pricing > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  font-size: 1.2rem;
 }
 #pricing > div > div {
+  padding: 4rem 3rem;
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   place-items: center;
+  outline: 0.1rem #23a6f0 solid;
+  border-radius: 0.5rem;
+  max-width: 23rem;
+  color: black;
+}
+#pricing > div > div:hover {
+  background-color: #252b42;
+  color: white;
+  padding: 6rem 3rem 4rem 3rem;
+  margin-bottom: 2rem;
+}
+#pricing > div > div:hover,
+#pricing > div > div > p {
+  color: white;
+}
+#pricing > div > div > h2 {
+  font-size: 2rem;
+}
+#pricing > div > div > p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #707070;
+}
+#pricing > div > div > div:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #23a6f0;
+}
+#pricing > div > div > div:nth-child(3) > h3 {
+  font-size: 3rem;
+  font: bold;
+}
+#pricing > div > div > div:nth-child(4) > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: bold;
+}
+#pricing > div > div > div:nth-child(4) > div > ion-icon {
+  font-size: 3rem;
+  color: #2cc070;
+}
+#pricing > div > div > button {
+  padding: 1.4rem 5rem;
+  font-size: 1.2rem;
+  background-color: #23a6f0;
+  color: white;
+  border-radius: 0.4rem;
 }
 
 /* contact-us section */
@@ -344,6 +399,33 @@ header > nav > div {
   padding: 1.2rem 0;
   border-radius: 0.6rem;
 }
+#contact-us-form-contact {
+  display: flex;
+  align-items: center;
+  padding-top: 4rem;
+}
+#contact-us-form-contact > div {
+  width: 100%;
+}
+#contact-us-form-contact > div > h4 {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+#contact-us-form-contact > div > p {
+  color: #707070;
+}
+#contact-us-form-contact-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#contact-us-form-contact-button-container > button {
+  padding: 1.5rem 4rem;
+  background-color: #23a6f0;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 0.4rem;
+}
 
 footer {
   background-color: white;
@@ -360,6 +442,15 @@ footer {
 }
 #footer-info > div > h3 {
   color: black;
+}
+#footer-info-contact > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+#footer-info-contact > div > ion-icon {
+  color: #23a6f0;
+  font-size: 2rem;
 }
 #footer-credits {
   background-color: #fafafa;
