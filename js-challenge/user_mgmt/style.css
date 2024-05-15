@@ -85,5 +85,11 @@ tr:nth-child(even) {
   padding: 0.5rem 2rem;
 }
 .create-user-form.hidden {
-  display: none;
+  visibility: hidden;
+}
+
+@media (max-width: 800px) {
+  .create-user-form.hidden {
+    display: none;
+  }
 }
