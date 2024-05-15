@@ -33,6 +33,11 @@ if (indexLocal.isEditing) {
   phone.value = allUsers[indexLocal.index].phone_number;
   email.value = allUsers[indexLocal.index].user_email;
   submitBtn.value = "Update";
+  submitBtn.classList.add("update");
+  createUserForm.classList.remove("hidden");
+}
+if (allUsers.length > 0 && !indexLocal.isEditing) {
+  createUserForm.classList.add("hidden");
 }
 
 createUserForm.addEventListener("submit", (event) => {
@@ -83,6 +88,7 @@ createUserForm.addEventListener("submit", (event) => {
     phone.value = "";
     email.value = "";
     submitBtn.value = "Create Account";
+    submitBtn.classList.remove("update");
 
     displayUsers();
     return;
@@ -127,6 +133,7 @@ function displayUsers() {
     userEmail.textContent = user.user_email;
 
     let deleteUserbtn = document.createElement("button");
+    deleteUserbtn.classList.add("user-data-delete");
     deleteUserbtn.textContent = "Delete";
     deleteUserbtn.addEventListener("click", () => {
       allUsers.splice(index, 1);
@@ -137,8 +144,14 @@ function displayUsers() {
     });
 
     let updateUserbtn = document.createElement("button");
-    updateUserbtn.textContent =
-      index === indexLocal.index ? "Cancel" : "Update";
+    updateUserbtn.classList.add("user-data-update");
+    if (index === indexLocal.index) {
+      updateUserbtn.textContent = "Cancel";
+      updateUserbtn.classList.add("cancel");
+    } else {
+      updateUserbtn.textContent = "Update";
+      updateUserbtn.classList.remove("cancel");
+    }
     updateUserbtn.style.marginLeft = "10px";
     updateUserbtn.addEventListener("click", () => {
       if (updateUserbtn.textContent === "Update") {
@@ -146,15 +159,19 @@ function displayUsers() {
         email.value = user.user_email;
         phone.value = user.phone_number;
         submitBtn.value = "Update";
+        submitBtn.classList.add("update");
         indexLocal.isEditing = true;
         indexLocal.index = index;
+        createUserForm.classList.remove("hidden");
       } else {
         username.value = "";
         email.value = "";
         phone.value = "";
         submitBtn.value = "Create Account";
+        submitBtn.classList.remove("update");
         indexLocal.isEditing = false;
         indexLocal.index = null;
+        createUserForm.classList.add("hidden");
       }
       localStorage.setItem("index", JSON.stringify(indexLocal));
       displayUsers();
@@ -175,3 +192,8 @@ function displayUsers() {
 }
 
 displayUsers();
+
+const manageBtn = document.querySelector("#manage-accounts");
+manageBtn.addEventListener("click", () => {
+  createUserForm.classList.toggle("hidden");
+});
