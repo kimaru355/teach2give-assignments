@@ -4,6 +4,7 @@
   border: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  background-color: transparent;
 }
 
 #hero {
@@ -231,11 +232,11 @@ header > nav > div {
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
-  height: 4rem;
+  /* height: 4rem; */
 }
 #newsletter-logos > img {
   flex-grow: 0;
-  width: 6rem;
+  width: 5rem;
   height: auto;
 }
 #newsletter-subscribe {
@@ -298,16 +299,14 @@ header > nav > div {
   border-radius: 0.5rem;
   max-width: 23rem;
   color: black;
+  margin-top: 2rem;
+  margin-bottom: 0;
 }
 #pricing > div > div:hover {
   background-color: #252b42;
   color: white;
   padding: 6rem 3rem 4rem 3rem;
-  margin-bottom: 2rem;
-}
-#pricing > div > div:hover,
-#pricing > div > div > p {
-  color: white;
+  margin-top: 0;
 }
 #pricing > div > div > h2 {
   font-size: 2rem;
@@ -347,9 +346,15 @@ header > nav > div {
 
 /* contact-us section */
 #contact-us {
-  padding: 10rem;
   display: relative;
-  background-color: #252b42;
+  padding: 10rem;
+  background-image: linear-gradient(
+    to bottom,
+    #252b42 0%,
+    #252b42 70%,
+    #fafafa 70%,
+    #fafafa 100%
+  );
 }
 #contact-us-branches {
   display: flex;
@@ -357,6 +362,7 @@ header > nav > div {
   align-items: center;
   gap: 20rem;
   padding-bottom: 10rem;
+  color: white;
 }
 #contact-us-branches > img {
   width: 40%;
