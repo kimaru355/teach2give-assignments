@@ -1,4 +1,4 @@
-const body = document.querySelector("body");
+const main = document.querySelector("main");
 const addProjectButton = document.querySelector("#add-project");
 
 let projects = localStorage.getItem("projects");
@@ -11,6 +11,51 @@ if (!projects) {
 let showAddProjectForm = false;
 
 const createElement = (element) => document.createElement(element);
+
+const createProjectCard = ({ projectName, projectDescription }, index) => {
+  const div = createElement("div");
+  const h2 = createElement("h2");
+  const viewButton = createElement("button");
+  const deleteButton = createElement("button");
+
+  div.classList.add("project-card");
+  viewButton.classList.add("view");
+  deleteButton.classList.add("delete");
+
+  h2.textContent = projectName;
+  viewButton.textContent = "View";
+  deleteButton.textContent = "Delete";
+
+  deleteButton.addEventListener("click", () => {
+    deleteProject(index);
+  });
+
+  div.appendChild(h2);
+  div.appendChild(viewButton);
+  div.appendChild(deleteButton);
+  return div;
+};
+
+const deleteProject = (index) => {
+  projects.splice(index, 1);
+  localStorage.setItem("projects", JSON.stringify(projects));
+  showProjects();
+};
+
+const showProject = (index) => {
+  //
+};
+
+const showProjects = () => {
+  while (main.firstElementChild) {
+    main.removeChild(main.firstElementChild);
+  }
+  projects.map((project, index) => {
+    let projectCard = createProjectCard(project, index);
+    main.appendChild(projectCard);
+  });
+};
+showProjects();
 
 const addProject = (projectName, projectDescription) => {
   let project = {
@@ -49,11 +94,15 @@ const showAddProject = () => {
     const projectName = inputText.value;
     const projectDescription = textArea.value;
     if (!projectName || !projectDescription) {
+      alert("Please fill both inputs");
       return;
     }
     addProject(projectName, projectDescription);
     inputText.value = "";
     textArea.value = "";
+    main.removeChild(main.lastElementChild);
+    addProjectButton.textContent = "Add Project";
+    showProjects();
   });
 
   form.appendChild(h2);
@@ -61,7 +110,7 @@ const showAddProject = () => {
   form.appendChild(textArea);
   form.appendChild(button);
   formWrapper.appendChild(form);
-  body.appendChild(formWrapper);
+  main.appendChild(formWrapper);
 };
 
 addProjectButton.addEventListener("click", () => {
@@ -70,7 +119,7 @@ addProjectButton.addEventListener("click", () => {
     showAddProject();
     addProjectButton.textContent = "Cancel";
   } else {
-    body.removeChild(body.lastElementChild);
+    main.removeChild(main.lastElementChild);
     addProjectButton.textContent = "Add Project";
   }
 });

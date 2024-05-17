@@ -25,9 +25,8 @@ button:hover {
   cursor: pointer;
 }
 
-body {
+main {
   position: relative;
-  min-height: 100vh;
 }
 #add-project {
   padding: 0.4rem;
@@ -37,14 +36,18 @@ body {
 
 #add-project-form-wrapper {
   width: 100%;
-  height: 95vh;
+  height: 90vh;
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 2rem;
 }
 #add-project-form {
@@ -62,4 +65,32 @@ body {
 #add-project-form button {
   padding: 0.4rem;
   background-color: #40a578;
+}
+
+.project-card {
+  padding: 0.2rem;
+  background-color: rgba(0, 141, 218, 0.3);
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  border-bottom: 0.1rem solid rgb(0, 141, 218);
+}
+.project-card > h2 {
+  margin-left: 0;
+  margin-right: auto;
+}
+.project-card .view {
+  padding: 0.2rem 1rem;
+  background-color: green;
+}
+.project-card .delete {
+  padding: 0.2rem 1rem;
+  background-color: red;
+}
+
+#view-project {
+  width: 90%;
+  margin: 0 5%;
+  padding: 1rem;
+  background-color: #5356ff;
 }
