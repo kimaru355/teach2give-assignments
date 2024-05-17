@@ -27,53 +27,37 @@
     </style>
   </head>
   <body>
+    <div id="body-bg-image"></div>
     <main>
-      <header>
-        <h2>TODO</h2>
-        <button><img src="images/icon-sun.svg" alt="sun icon" /></button>
-      </header>
-      <div id="input-form">
-        <input type="checkbox" name="input-completed" id="input-completed" />
-        <input
-          type="text"
-          name="task"
-          id="input-task"
-          placeholder="Enter a task"
-          autocomplete="off"
-        />
-      </div>
-      <div id="show-tasks">
-        <!-- <div>
-          <input type="checkbox" name="task-completed" class="task-completed" />
-          <p>Jog around the park 3x</p>
-          <button><img src="images/icon-cross.svg" /></button>
-        </div> -->
-      </div>
-      <div id="tasks-actions">
-        <p id="items-left"></p>
-        <div>
-          <button id="show-all-tasks">All</button>
-          <button id="show-active-tasks">Active</button>
-          <button id="show-completed-tasks">Completed</button>
+      <section>
+        <header>
+          <h2>TODO</h2>
+          <button id="change-theme">
+            <img src="images/icon-sun.svg" alt="sun icon" />
+          </button>
+        </header>
+        <div id="input-form">
+          <input type="checkbox" name="input-completed" id="input-completed" />
+          <input
+            type="text"
+            name="task"
+            id="input-task"
+            placeholder="Enter a task"
+            autocomplete="off"
+          />
         </div>
-        <button id="delete-completed">Clear Completed</button>
-      </div>
+        <div id="show-tasks"></div>
+        <div id="tasks-actions">
+          <p id="items-left"></p>
+          <div>
+            <button id="show-all-tasks">All</button>
+            <button id="show-active-tasks">Active</button>
+            <button id="show-completed-tasks">Completed</button>
+          </div>
+          <button id="delete-completed">Clear Completed</button>
+        </div>
+      </section>
     </main>
-    <footer>
-      <p>
-        Todo
-        <!-- Add dynamic number -->
-        items left All Active Completed Clear Completed Drag and drop to reorder
-        list
-      </p>
-
-      <div class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
-      </div>
-    </footer>
 
     <script src="index.js"></script>
   </body>

@@ -6,8 +6,21 @@ const showAll = document.querySelector("#show-all-tasks");
 const showActive = document.querySelector("#show-active-tasks");
 const showCompleted = document.querySelector("#show-completed-tasks");
 const deleteCompleted = document.querySelector("#delete-completed");
+const changeThemeBtn = document.querySelector("#change-theme");
+const bodyBgImg = document.querySelector("#body-bg-image");
+const body = document.querySelector("body");
 
 /* load or set local storage */
+let filter = localStorage.getItem("filter");
+if (!filter) {
+  filter = "all";
+  localStorage.setItem("filter", filter);
+}
+let theme = localStorage.getItem("theme");
+if (theme === null) {
+  theme = "dark";
+  localStorage.setItem("theme", theme);
+}
 let tasks = localStorage.getItem("tasks");
 if (!tasks) {
   tasks = [];
@@ -15,42 +28,37 @@ if (!tasks) {
 } else {
   tasks = JSON.parse(tasks);
 }
-let filter = localStorage.getItem("filter");
-if (!filter) {
-  filter = "all";
-  localStorage.setItem("filter", filter);
-}
 
-/* edit the tasks */
-const addTask = (task, completed) => {
-  let taskItem = {
-    task: task,
-    completed: completed,
-  };
-  tasks.splice(0, 0, taskItem);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  displayTasks();
-  inputTask.focus = true;
+/* change theme */
+const showTheme = () => {
+  let allDivs = document.querySelectorAll("div");
+  if (theme === "dark") {
+    changeThemeBtn.firstElementChild.setAttribute("src", "images/icon-sun.svg");
+    bodyBgImg.style.backgroundImage = 'url("images/bg-desktop-dark.jpg")';
+    body.style.backgroundColor = "#181824";
+    allDivs.forEach((div) => {
+      div.style.backgroundColor = "#25273c";
+    });
+  } else {
+    changeThemeBtn.firstElementChild.setAttribute(
+      "src",
+      "images/icon-moon.svg"
+    );
+    bodyBgImg.style.backgroundImage = 'url("images/bg-desktop-light.jpg")';
+    body.style.backgroundColor = "#fafafa";
+    allDivs.forEach((div) => {
+      div.style.backgroundColor = "white";
+    });
+  }
 };
-
-const editTask = (index, completed) => {
-  let task = tasks[index];
-  task.completed = completed;
-  tasks.splice(index, 1, task);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  displayTasks();
-};
-
-const deleteTask = (index) => {
-  tasks.splice(index, 1);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  displayTasks();
-};
-
-const removeCompleted = (index) => {
-  tasks = tasks.filter((task) => !task.completed);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  displayTasks();
+const changeTheme = () => {
+  if (theme === "dark") {
+    theme = "light";
+  } else {
+    theme = "dark";
+  }
+  localStorage.setItem("theme", theme);
+  showTheme();
 };
 
 /* create the UI for displaying the tasks */
@@ -60,9 +68,12 @@ const createElement = (element) => {
 const createTaskDiv = ({ id, task, completed }) => {
   const taskDiv = createElement("div");
   const taskCompleted = createElement("input");
-  const taskItem = createElement("p");
+  const taskItem = createElement("button");
   const taskDelete = createElement("button");
   const taskClose = createElement("img");
+
+  taskCompleted.checked = completed;
+  taskItem.textContent = task;
 
   taskCompleted.setAttribute("type", "checkbox");
   taskCompleted.setAttribute("name", "task-completed");
@@ -70,8 +81,10 @@ const createTaskDiv = ({ id, task, completed }) => {
   taskClose.setAttribute("src", "images/icon-cross.svg");
   taskCompleted.classList.add("task-completed");
 
-  taskCompleted.checked = completed;
-  taskItem.textContent = task;
+  if (completed) {
+    taskItem.style.color = "rgba(0, 0, 0, 0.2)";
+    taskItem.style.textDecoration = "line-through";
+  }
 
   taskDelete.addEventListener("click", () => {
     deleteTask(id);
@@ -110,9 +123,44 @@ const displayTasks = () => {
       }
     }
   });
-  itemsLeft.textContent = `${tasks.length} items left`;
+  itemsLeft.textContent = `${
+    tasks.filter((task) => !task.completed).length
+  } items left`;
+  showTheme();
 };
 displayTasks();
+
+/* edit the tasks */
+const addTask = (task, completed) => {
+  let taskItem = {
+    task: task,
+    completed: completed,
+  };
+  tasks.splice(0, 0, taskItem);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  displayTasks();
+  inputTask.focus = true;
+};
+
+const editTask = (index, completed) => {
+  let task = tasks[index];
+  task.completed = completed;
+  tasks.splice(index, 1, task);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  displayTasks();
+};
+
+const deleteTask = (index) => {
+  tasks.splice(index, 1);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  displayTasks();
+};
+
+const removeCompleted = (index) => {
+  tasks = tasks.filter((task) => !task.completed);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  displayTasks();
+};
 
 /* event listeners */
 // input
@@ -143,4 +191,7 @@ showCompleted.addEventListener("click", () => {
 });
 deleteCompleted.addEventListener("click", () => {
   removeCompleted();
+});
+changeThemeBtn.addEventListener("click", () => {
+  changeTheme();
 });
