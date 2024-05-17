@@ -29,6 +29,21 @@ const createProjectCard = ({ projectName, projectDescription }, index) => {
   deleteButton.addEventListener("click", () => {
     deleteProject(index);
   });
+  viewButton.addEventListener("click", () => {
+    if (div.lastElementChild.id === "view-project") {
+      div.removeChild(div.lastElementChild);
+      return;
+    }
+    let p = createElement("p");
+    p.setAttribute("id", "view-project");
+    p.textContent = projectDescription;
+    div.appendChild(p);
+  });
+  viewButton.addEventListener("focusout", () => {
+    if (div.lastElementChild.id === "view-project") {
+      div.removeChild(div.lastElementChild);
+    }
+  });
 
   div.appendChild(h2);
   div.appendChild(viewButton);
@@ -41,11 +56,6 @@ const deleteProject = (index) => {
   localStorage.setItem("projects", JSON.stringify(projects));
   showProjects();
 };
-
-const showProject = (index) => {
-  //
-};
-
 const showProjects = () => {
   while (main.firstElementChild) {
     main.removeChild(main.firstElementChild);

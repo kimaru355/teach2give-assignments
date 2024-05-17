@@ -101,8 +101,6 @@ main {
 }
 
 #view-project {
-  width: 90%;
-  margin: 0 5%;
-  padding: 1rem;
+  width: 100%;
   background-color: #5356ff;
 }
