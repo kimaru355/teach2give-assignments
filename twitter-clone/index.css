@@ -80,22 +80,28 @@ main {
   border-radius: 0.2rem;
   display: flex;
   gap: 1rem;
+  height: min-content;
 }
 .post > img,
 .comment > img {
-  width: 4rem;
+  width: 6rem;
   height: auto;
   border-radius: 0.4rem;
+}
+.post-content,
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 .post-content > div:first-child,
 .comment-content > div:first-child {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 .post-content > div:last-child,
 .comment-content > div:last-child {
-  margin-top: 0.5rem;
   display: flex;
   gap: 2rem;
 }
