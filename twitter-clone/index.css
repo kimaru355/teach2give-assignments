@@ -13,17 +13,31 @@ h1 {
 h2 {
   font-size: 2rem;
 }
+main {
+  padding-top: 4rem;
+  background-image: url("background.jpg");
+  background-position: top;
+  /* background-size: cover; */
+  background-size: 100% 12rem;
+  background-repeat: no-repeat;
+}
 #postsComments {
   display: flex;
   padding: 1rem;
+  gap: 1rem;
 }
 
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 2rem;
   padding: 1rem 6rem;
   background-color: #1da1f2;
+}
+header p,
+header label {
+  color: white;
 }
 #users {
   background-color: white;
@@ -51,11 +65,25 @@ header {
   gap: 1rem;
   width: 50%;
 }
-.post > p:nth-child(1) {
+.post-wrapper {
+  border-radius: 0.2rem;
+  display: flex;
+  gap: 1rem;
+}
+.post-wrapper > img {
+  width: 4rem;
+  height: auto;
+  border-radius: 0.4rem;
+}
+.post-wrapper > div {
+  display: block;
+}
+.post-wrapper > .post-wrapper-title {
   font-weight: bold;
 }
-.post:hover {
+.post-wrapper:hover {
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 #comments {
   display: flex;

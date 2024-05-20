@@ -70,14 +70,25 @@ const fetchComments = async (postId) => {
 const createPostDiv = (post) => {
   const postDiv = createElement("div");
   const image = createElement("img");
+  const postWrapper = createElement("div");
   const NameDiv = createElement("div");
   const name = createElement("p");
   const twitterVerified = createElement("img");
   const twitterIcon = createElement("ion-icon");
   const postTitle = createElement("p");
   const postBody = createElement("p");
+  const reactionDiv = createElement("div");
+  const commentDiv = createElement("div");
+  const commentCount = createElement("p");
+  const repostDiv = createElement("div");
+  const repostCount = createElement("p");
+  const likeDiv = createElement("div");
+  const likeCount = createElement("p");
 
+  postWrapper.classList.add("post-wrapper");
+  image.setAttribute("src", "profile.jpeg");
   twitterIcon.setAttribute("name", "logo-twitter");
+  postTitle.classList.add("post-title");
   postDiv.classList.add("post");
 
   postDiv.addEventListener("click", () => {
@@ -89,7 +100,9 @@ const createPostDiv = (post) => {
 
   postDiv.appendChild(postTitle);
   postDiv.appendChild(postBody);
-  return postDiv;
+  postWrapper.appendChild(image);
+  postWrapper.appendChild(postDiv);
+  return postWrapper;
 };
 
 const displayPosts = (posts) => {
@@ -103,6 +116,7 @@ const displayPosts = (posts) => {
     const postDiv = createPostDiv(post);
     postsDiv.appendChild(postDiv);
   });
+  fetchComments(posts[0].id);
 };
 
 const fetchPosts = async (id) => {
@@ -167,9 +181,6 @@ const fetchUsers = async () => {
       users.map((user) => {
         if (user.id === id) {
           displayUser(user);
-          while (commentsDiv.firstElementChild) {
-            commentsDiv.removeChild(commentsDiv.firstElementChild);
-          }
         }
       });
     });
