@@ -9,37 +9,72 @@ const POSTS_API = "https://jsonplaceholder.typicode.com/posts";
 const COMMENTS_API = "https://jsonplaceholder.typicode.com/comments";
 const POST_API = "https://jsonplaceholder.typicode.com/posts?userId=1";
 const COMMENT_API = "https://jsonplaceholder.typicode.com/comments?postId=1";
-const IMAGE_URL =
-  "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg";
-const TWITTER_VERIFIED =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyVqwoWz4tLDHFi5hnTlSPMUX4bAywnBYlUoA36Gt2mg&s";
 let users = [];
+let currentUser;
 
 const createElement = (element) => document.createElement(element);
 
 const createCommentDiv = (comment) => {
   const commentDiv = createElement("div");
+  const commentContent = createElement("div");
   const image = createElement("img");
-  const NameDiv = createElement("div");
+  const nameDiv = createElement("div");
   const name = createElement("p");
   const twitterVerified = createElement("img");
-  const twitterIcon = createElement("ion-icon");
-  const commentName = createElement("p");
+  const twitterIcon = createElement("img");
   const commentBody = createElement("p");
+  const reactionDiv = createElement("div");
+  const messageDiv = createElement("div");
+  const commentIcon = createElement("img");
+  const commentCount = createElement("p");
+  const repostDiv = createElement("div");
+  const repostIcon = createElement("img");
+  const repostCount = createElement("p");
+  const likeDiv = createElement("div");
+  const likeIcon = createElement("img");
+  const likeCount = createElement("p");
 
-  twitterIcon.setAttribute("name", "logo-twitter");
   commentDiv.classList.add("comment");
+  image.setAttribute("src", "profile.jpeg");
+  twitterVerified.setAttribute("src", "verify.png");
+  twitterVerified.classList.add("icon");
+  twitterIcon.setAttribute("src", "twitter.png");
+  twitterIcon.classList.add("icon");
+  commentContent.classList.add("comment-content");
+  commentIcon.setAttribute("src", "message.png");
+  commentIcon.classList.add("icon");
+  repostIcon.setAttribute("src", "retweet.png");
+  repostIcon.classList.add("icon");
+  likeIcon.setAttribute("src", "heart.png");
+  likeIcon.classList.add("icon");
 
-  commentDiv.addEventListener("click", () => {
-    const comments = fetchComments(comment.id);
-    displayComments(comments);
+  name.textContent = comment.name;
+  commentBody.textContent = comment.body;
+  commentCount.textContent = "0";
+  repostCount.textContent = "0";
+  likeCount.textContent = "0";
+
+  commentContent.addEventListener("click", () => {
+    fetchComments(comment.id);
   });
 
-  commentName.textContent = comment.name;
-  commentBody.textContent = comment.body;
-
-  commentDiv.appendChild(commentName);
-  commentDiv.appendChild(commentBody);
+  commentDiv.appendChild(image);
+  nameDiv.appendChild(name);
+  nameDiv.appendChild(twitterVerified);
+  nameDiv.appendChild(twitterIcon);
+  commentContent.appendChild(nameDiv);
+  commentContent.appendChild(commentBody);
+  messageDiv.appendChild(commentIcon);
+  messageDiv.appendChild(commentCount);
+  repostDiv.appendChild(repostIcon);
+  repostDiv.appendChild(repostCount);
+  likeDiv.appendChild(likeIcon);
+  likeDiv.appendChild(likeCount);
+  reactionDiv.appendChild(messageDiv);
+  reactionDiv.appendChild(repostDiv);
+  reactionDiv.appendChild(likeDiv);
+  commentContent.appendChild(reactionDiv);
+  commentDiv.appendChild(commentContent);
   return commentDiv;
 };
 
@@ -47,7 +82,7 @@ const displayComments = (comments) => {
   while (commentsDiv.firstElementChild) {
     commentsDiv.removeChild(commentsDiv.firstElementChild);
   }
-  let commentsTitle = createElement("h2");
+  let commentsTitle = createElement("h3");
   commentsTitle.textContent = `Post ${comments[0].postId} Comments`;
   commentsDiv.appendChild(commentsTitle);
   comments.map((comment) => {
@@ -69,40 +104,70 @@ const fetchComments = async (postId) => {
 
 const createPostDiv = (post) => {
   const postDiv = createElement("div");
+  const postContent = createElement("div");
   const image = createElement("img");
-  const postWrapper = createElement("div");
-  const NameDiv = createElement("div");
+  const nameDiv = createElement("div");
   const name = createElement("p");
   const twitterVerified = createElement("img");
-  const twitterIcon = createElement("ion-icon");
+  const twitterIcon = createElement("img");
   const postTitle = createElement("p");
   const postBody = createElement("p");
   const reactionDiv = createElement("div");
   const commentDiv = createElement("div");
+  const commentIcon = createElement("img");
   const commentCount = createElement("p");
   const repostDiv = createElement("div");
+  const repostIcon = createElement("img");
   const repostCount = createElement("p");
   const likeDiv = createElement("div");
+  const likeIcon = createElement("img");
   const likeCount = createElement("p");
 
-  postWrapper.classList.add("post-wrapper");
-  image.setAttribute("src", "profile.jpeg");
-  twitterIcon.setAttribute("name", "logo-twitter");
-  postTitle.classList.add("post-title");
   postDiv.classList.add("post");
+  image.setAttribute("src", "profile.jpeg");
+  twitterVerified.setAttribute("src", "verify.png");
+  twitterVerified.classList.add("icon");
+  twitterIcon.setAttribute("src", "twitter.png");
+  twitterIcon.classList.add("icon");
+  postTitle.classList.add("post-title");
+  postContent.classList.add("post-content");
+  commentIcon.setAttribute("src", "message.png");
+  commentIcon.classList.add("icon");
+  repostIcon.setAttribute("src", "retweet.png");
+  repostIcon.classList.add("icon");
+  likeIcon.setAttribute("src", "heart.png");
+  likeIcon.classList.add("icon");
 
-  postDiv.addEventListener("click", () => {
+  name.textContent = currentUser.name;
+  postTitle.textContent = post.title;
+  postBody.textContent = post.body;
+  commentCount.textContent = "200";
+  repostCount.textContent = "200";
+  likeCount.textContent = "200";
+
+  postContent.addEventListener("click", () => {
     fetchComments(post.id);
   });
 
-  postTitle.textContent = post.title;
-  postBody.textContent = post.body;
-
-  postDiv.appendChild(postTitle);
-  postDiv.appendChild(postBody);
-  postWrapper.appendChild(image);
-  postWrapper.appendChild(postDiv);
-  return postWrapper;
+  postDiv.appendChild(image);
+  nameDiv.appendChild(name);
+  nameDiv.appendChild(twitterVerified);
+  nameDiv.appendChild(twitterIcon);
+  postContent.appendChild(nameDiv);
+  postContent.appendChild(postTitle);
+  postContent.appendChild(postBody);
+  commentDiv.appendChild(commentIcon);
+  commentDiv.appendChild(commentCount);
+  repostDiv.appendChild(repostIcon);
+  repostDiv.appendChild(repostCount);
+  likeDiv.appendChild(likeIcon);
+  likeDiv.appendChild(likeCount);
+  reactionDiv.appendChild(commentDiv);
+  reactionDiv.appendChild(repostDiv);
+  reactionDiv.appendChild(likeDiv);
+  postContent.appendChild(reactionDiv);
+  postDiv.appendChild(postContent);
+  return postDiv;
 };
 
 const displayPosts = (posts) => {
@@ -144,7 +209,7 @@ const displayUser = (user) => {
   const locationIcon = createElement("ion-icon");
   const locationName = createElement("p");
 
-  image.setAttribute("src", IMAGE_URL);
+  image.setAttribute("src", "profile.jpeg");
   userDiv.setAttribute("id", "current-user");
   locationIcon.setAttribute("name", "location-sharp");
 
@@ -163,6 +228,7 @@ const displayUser = (user) => {
   userDiv.appendChild(companyCatchPhrase);
   userDiv.appendChild(locationDiv);
   userWrapper.appendChild(userDiv);
+  currentUser = user;
   fetchPosts(user.id);
 };
 
