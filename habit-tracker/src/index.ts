@@ -20,7 +20,7 @@ interface Habit {
 const createHabitCard = (habit: Habit): HTMLDivElement => {
   const habitCard: HTMLDivElement = document.createElement("div");
   const habitImage: HTMLImageElement = document.createElement("img");
-  const habitName: HTMLHeadingElement = document.createElement("h2");
+  const habitName: HTMLHeadingElement = document.createElement("h3");
   const habitCurrentStreak: HTMLParagraphElement = document.createElement("p");
   const habitLongestStreak: HTMLParagraphElement = document.createElement("p");
 
@@ -33,8 +33,9 @@ const createHabitCard = (habit: Habit): HTMLDivElement => {
 
   habitName.textContent = habit.name;
   habitCurrentStreak.textContent =
-    "Current Streak: " + (today.getDate() - startDate.getDate()).toString();
-  habitLongestStreak.textContent = "Longest Streak: 0";
+    "Current Streak: " + calculateStreak(habit.start);
+  habitLongestStreak.textContent =
+    "Longest Streak: " + calculateStreak(habit.start);
 
   habitCard.appendChild(habitImage);
   habitCard.appendChild(habitName);
@@ -69,6 +70,8 @@ const addHabit = async (habit: Habit) => {
 
 const showAddHabitForm = () => {
   const habitForm: HTMLFormElement = document.createElement("form");
+  const closeBtn: HTMLButtonElement = document.createElement("button");
+  const closeImage: HTMLImageElement = document.createElement("img");
   const labelName: HTMLLabelElement = document.createElement("label");
   const inputName: HTMLInputElement = document.createElement("input");
   const labelType: HTMLLabelElement = document.createElement("label");
@@ -98,6 +101,10 @@ const showAddHabitForm = () => {
 
   addHabitForm?.style.height = "100vh";
   habitForm.setAttribute("id", "habitForm");
+  closeBtn.setAttribute("type", "button");
+  closeBtn.setAttribute("id", "closeBtn");
+  closeImage.setAttribute("src", "./assets/close.svg");
+  closeImage.setAttribute("alt", "Close");
   labelName.setAttribute("for", "habitName");
   inputName.setAttribute("type", "text");
   inputName.setAttribute("id", "habitName");
@@ -145,21 +152,21 @@ const showAddHabitForm = () => {
   inputImageUrl.setAttribute("required", "true");
   submitBtn.setAttribute("type", "submit");
 
-  labelName.textContent = "Habit Name";
+  labelName.textContent = "Habit Name*";
   inputName.placeholder = "Habit Name";
-  labelType.textContent = "Type";
-  labelFrequency.textContent = "Frequency";
+  labelType.textContent = "Type*";
+  labelFrequency.textContent = "Frequency*";
   inputFrequency.placeholder = "How often in a day?";
-  labelGoal.textContent = "Goal";
+  labelGoal.textContent = "Goal*";
   inputGoal.placeholder = "What is your goal?";
-  labelPriority.textContent = "Priority";
-  labelHabitImpact.textContent = "Habit Impact";
+  labelPriority.textContent = "Priority*";
+  labelHabitImpact.textContent = "Habit Impact*";
   inputHabitImpact.placeholder = "How does this habit affect your life?";
-  labelGoalImpact.textContent = "Goal Impact";
+  labelGoalImpact.textContent = "Goal Impact*";
   inputGoalImpact.placeholder =
     "How will achieving your goal impact your life?";
-  labelStart.textContent = "Start";
-  labelImageUrl.textContent = "Image URL";
+  labelStart.textContent = "Start | Stop Date*";
+  labelImageUrl.textContent = "Image URL*";
   inputImageUrl.placeholder = "Enter path to image";
   submitBtn.textContent = "Add Habit";
 
@@ -179,12 +186,18 @@ const showAddHabitForm = () => {
     addHabit(habit);
     // habitForm.reset();
   });
+  closeBtn.addEventListener("click", () => {
+    addHabitForm?.removeChild(habitForm);
+    addHabitForm?.style.height = "0";
+  });
 
+  closeBtn.appendChild(closeImage);
   inputType.appendChild(optionPositive);
   inputType.appendChild(optionNegative);
   inputPriority.appendChild(optionLow);
   inputPriority.appendChild(optionMedium);
   inputPriority.appendChild(optionHigh);
+  habitForm.appendChild(closeBtn);
   habitForm.appendChild(labelName);
   habitForm.appendChild(inputName);
   habitForm.appendChild(labelType);
@@ -208,3 +221,35 @@ const showAddHabitForm = () => {
 };
 
 addHabitBtn?.addEventListener("click", showAddHabitForm);
+
+function calculateStreak(startDate: string): string {
+  const today = new Date();
+  const start = new Date(startDate);
+  let days: number = 0;
+  let months: number = 0;
+  let years: number = 0;
+  let diffMiliseconds = today.getTime() - start.getTime();
+  let timeDiff: string = "";
+
+  while (diffMiliseconds > 365 * 24 * 60 * 60 * 1000) {
+    diffMiliseconds -= 365 * 24 * 60 * 60 * 1000;
+    years++;
+  }
+  while (diffMiliseconds > 30 * 24 * 60 * 60 * 1000) {
+    diffMiliseconds -= 30 * 24 * 60 * 60 * 1000;
+    months++;
+  }
+  while (diffMiliseconds > 24 * 60 * 60 * 1000) {
+    diffMiliseconds -= 24 * 60 * 60 * 1000;
+    days++;
+  }
+
+  if (years > 0) {
+    timeDiff += years + (years > 1 ? " years " : " year ");
+  }
+  if (months > 0) {
+    timeDiff += months + (months > 1 ? " months " : " month ");
+  }
+  timeDiff += days + (days < 1 ? " days " : days > 1 ? " days " : " day ");
+  return timeDiff;
+}
