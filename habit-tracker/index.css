@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 0;
+  color: black;
+  font-size: 1rem;
+}
+button:hover {
+  cursor: pointer;
+}
+input,
+textarea {
+  outline: 0.1rem solid #7ab2b2;
+  padding: 0.5rem;
+}
+input:focus,
+textarea:focus {
+  outline: 0.2rem solid #3d8a8a;
+}
+select {
+  outline: 0.1rem solid #7ab2b2;
+  padding: 0.5rem;
+}
+select:focus {
+  outline: 0.2rem solid #3d8a8a;
+}
+option {
+  padding: 0.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+
+main {
+  position: relative;
+}
+#hero {
+  background-color: #ff7f50;
+  width: 100%;
+  min-height: 60vh;
+  padding: 2rem 4rem;
+}
+#hero-bg {
+  width: 100%;
+  height: 60vh;
+  background-image: url("./assets/bg.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#addHabitBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#addHabitForm {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#habitForm {
+  width: 100%;
+  max-width: 40rem;
+  margin: 1rem;
+  position: relative;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+#habitForm label {
+  display: block;
+}
+#habitForm input {
+  display: inline;
+}
+#habitForm > button {
+  background-color: #3d8a8a;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 2rem;
+}
+#habitList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.habit-card {
+  padding: 1rem;
+  border: 0.2rem solid #ffc0a9;
+  width: 16rem;
+}
+
+@media (max-width: 768px) {
+  #hero {
+    padding: 2rem 1rem;
+  }
+  #hero-bg {
+    background-size: 80% 70%;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: start;
+  }
+  #hero-bg > button {
+    margin-bottom: 0;
+    margin-top: auto;
+  }
+}

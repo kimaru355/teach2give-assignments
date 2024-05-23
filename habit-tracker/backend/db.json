@@ -1,0 +1,52 @@
+{
+  "habits": [
+    {
+      "id": "0fda",
+      "name": "dsfas",
+      "type": "negative",
+      "frequency": "sdf",
+      "goal": "dsfa",
+      "priority": "low",
+      "habitImpact": "afd",
+      "goalImpact": "fdas",
+      "start": "2024-05-21",
+      "imagePath": "dfsa"
+    },
+    {
+      "id": "2209",
+      "name": "sfdg",
+      "type": "negative",
+      "frequency": "af",
+      "goal": "dsaf",
+      "priority": "low",
+      "habitImpact": "adfs",
+      "goalImpact": "adsf",
+      "start": "2024-05-08",
+      "imagePath": "daf"
+    },
+    {
+      "id": "ba16",
+      "name": "dsfas",
+      "type": "positive",
+      "frequency": "asdfad",
+      "goal": "sdfdsaf",
+      "priority": "low",
+      "habitImpact": "sdf",
+      "goalImpact": "dsfa",
+      "start": "2024-05-14",
+      "imagePath": "fgsg"
+    },
+    {
+      "id": "224e",
+      "name": "ddsad",
+      "type": "positive",
+      "frequency": "dsfa",
+      "goal": "fsad",
+      "priority": "low",
+      "habitImpact": "dasf",
+      "goalImpact": "dsaf",
+      "start": "2024-05-08",
+      "imagePath": "dsaf"
+    }
+  ]
+}

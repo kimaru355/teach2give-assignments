@@ -96,10 +96,7 @@ const fetchComments = async (postId) => {
     const response = await fetch(`${COMMENTS_API}?postId=${postId}`);
     const comments = await response.json();
     displayComments(comments);
-  } catch (e) {
-    console.log("Error fetching comments");
-    console.error(e);
-  }
+  } catch (e) {}
 };
 
 const createPostDiv = (post) => {
@@ -189,10 +186,7 @@ const fetchPosts = async (id) => {
     const response = await fetch(`${POSTS_API}?userId=${id}`);
     const posts = await response.json();
     displayPosts(posts);
-  } catch (e) {
-    console.log("Failed to fetch posts");
-    console.error(e);
-  }
+  } catch (e) {}
 };
 
 const displayUser = (user) => {
@@ -251,9 +245,6 @@ const fetchUsers = async () => {
       });
     });
     displayUser(users[0]);
-  } catch (e) {
-    console.log("Error fetching users");
-    console.error(e);
-  }
+  } catch (e) {}
 };
 fetchUsers();

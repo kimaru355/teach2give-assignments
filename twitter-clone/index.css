@@ -122,3 +122,13 @@ main {
   border-top: 0.1rem solid #e5e7eb;
   padding-top: 0.5rem;
 }
+
+@media (max-width: 800px) {
+  #postsComments {
+    flex-direction: column;
+  }
+  #posts,
+  #comments {
+    width: 100%;
+  }
+}
