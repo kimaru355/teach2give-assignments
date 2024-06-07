@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE get_note(
+    @id VARCHAR(255)
+)
+AS
+BEGIN
+    SELECT * FROM notes WHERE id = @id;
+END;

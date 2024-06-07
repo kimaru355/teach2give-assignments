@@ -1,0 +1,7 @@
+CREATE OR ALTER PROCEDURE delete_note(
+    @id VARCHAR(255)
+)
+AS
+BEGIN
+    DELETE FROM notes WHERE id = @id;
+END;

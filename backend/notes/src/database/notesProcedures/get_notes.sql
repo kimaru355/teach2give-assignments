@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE get_notes()
+AS
+BEGIN
+    SELECT * FROM notes;
+END;
