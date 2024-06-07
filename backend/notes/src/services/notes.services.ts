@@ -56,8 +56,10 @@ export class Notes implements NotesService {
       const result = (
         await (await pool)
           .request()
-          .input("title", mssql.VarChar, note.title)
-          .input("content", mssql.VarChar, note.content)
+          .input("id", note.id)
+          .input("title", note.title)
+          .input("content", note.content)
+          .input("created_at", note.created_at)
           .execute("create_note")
       ).recordset;
       return {
@@ -81,8 +83,8 @@ export class Notes implements NotesService {
         await (await pool)
           .request()
           .input("id", mssql.Int, id)
-          .input("title", mssql.VarChar, note.title)
-          .input("content", mssql.VarChar, note.content)
+          .input("title", note.title)
+          .input("content", note.content)
           .execute("update_note")
       ).recordset;
       return {
