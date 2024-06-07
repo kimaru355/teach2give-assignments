@@ -11,7 +11,6 @@ export const createNote = async (
   const note: Note = req.body;
   note.id = v4();
   note.created_at = new Date().toISOString();
-  console.log(note);
   const notes = new Notes();
   const response = await notes.createNote(note);
   return res.status(201).json(response);

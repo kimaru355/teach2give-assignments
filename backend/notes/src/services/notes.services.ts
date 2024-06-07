@@ -31,10 +31,7 @@ export class Notes implements NotesService {
     try {
       const pool = mssql.connect(sqlConfig);
       const result = (
-        await (await pool)
-          .request()
-          .input("id", mssql.Int, id)
-          .execute("get_note")
+        await (await pool).request().input("id", id).execute("get_note")
       ).recordset;
       return {
         success: true,
@@ -53,7 +50,7 @@ export class Notes implements NotesService {
   public async createNote(note: Note): Promise<Res> {
     try {
       const pool = mssql.connect(sqlConfig);
-      const result = (
+      const results = (
         await (await pool)
           .request()
           .input("id", note.id)
@@ -61,12 +58,20 @@ export class Notes implements NotesService {
           .input("content", note.content)
           .input("created_at", note.created_at)
           .execute("create_note")
-      ).recordset;
-      return {
-        success: true,
-        message: "Note created successfully",
-        data: result,
-      };
+      ).rowsAffected;
+      if (results[0] == 1) {
+        return {
+          success: true,
+          message: "Project created successfully",
+          data: null,
+        };
+      } else {
+        return {
+          success: false,
+          message: "Error while creating project",
+          data: null,
+        };
+      }
     } catch (error) {
       return {
         success: false,
@@ -79,19 +84,27 @@ export class Notes implements NotesService {
   public async updateNote(id: string, note: Note): Promise<Res> {
     try {
       const pool = mssql.connect(sqlConfig);
-      const result = (
+      const results = (
         await (await pool)
           .request()
-          .input("id", mssql.Int, id)
+          .input("id", id)
           .input("title", note.title)
           .input("content", note.content)
           .execute("update_note")
-      ).recordset;
-      return {
-        success: true,
-        message: "Note updated successfully",
-        data: result,
-      };
+      ).rowsAffected;
+      if (results[0] < 1) {
+        return {
+          success: false,
+          message: "Error while updating",
+          data: null,
+        };
+      } else {
+        return {
+          success: true,
+          message: "Project Updated successfully",
+          data: null,
+        };
+      }
     } catch (error) {
       return {
         success: false,
@@ -105,10 +118,7 @@ export class Notes implements NotesService {
     try {
       const pool = mssql.connect(sqlConfig);
       const result = (
-        await (await pool)
-          .request()
-          .input("id", mssql.Int, id)
-          .execute("delete_note")
+        await (await pool).request().input("id", id).execute("delete_note")
       ).recordset;
       return {
         success: true,

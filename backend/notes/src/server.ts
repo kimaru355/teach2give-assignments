@@ -15,15 +15,8 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   }
   next();
 });
-const logger = (req: Request, res: Response, next: NextFunction) => {
-  console.log("Method:", req.method);
-  console.log("Path:", req.path);
-  console.log("Body:", req.body);
-  console.log("Params:", req.params);
-  next();
-};
 
-app.use("/notes", logger, notesRouter);
+app.use("/notes", notesRouter);
 
 const port = 3003;
 
