@@ -1,0 +1,76 @@
+{
+  "habits": [
+    {
+      "id": "0c5a",
+      "name": "Smoking",
+      "type": "negative",
+      "frequency": "5 cigarettes a day",
+      "goal": "To reduce the frequency and eventually stop smoking",
+      "priority": "high",
+      "habitImpact": "Low health",
+      "goalImpact": "Healthier life",
+      "start": "2024-04-29",
+      "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcY4XzB7hlAqR1CaBIiZJmQNGAmCDisXhRGnlNO8MGFg&s"
+    },
+    {
+      "id": "db73",
+      "name": "Coding",
+      "type": "positive",
+      "frequency": "8hrs a day",
+      "goal": "To get 80hrs a week",
+      "priority": "high",
+      "habitImpact": "Take long to achieve goal",
+      "goalImpact": "Achieve goal sooner",
+      "start": "2022-08-25",
+      "imagePath": "https://www.hubspot.com/hubfs/how-to-start-coding-1.jpg"
+    },
+    {
+      "id": "d987",
+      "name": "Alcohol",
+      "type": "negative",
+      "frequency": "3 times a week",
+      "goal": "To stop taking alcohol",
+      "priority": "medium",
+      "habitImpact": "Financial drainage",
+      "goalImpact": "Avoid wasting money",
+      "start": "2022-04-04",
+      "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI1HMIKP50Sro3x5KtUxzq3jh2rbouHJJFjep-CDB7rw&s"
+    },
+    {
+      "id": "b5a6",
+      "name": "Healthy eating",
+      "type": "positive",
+      "frequency": "Rarely",
+      "goal": "5 times a week",
+      "priority": "medium",
+      "habitImpact": "Less nourishment",
+      "goalImpact": "Healthy lifestyle",
+      "start": "2024-06-01",
+      "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX99GW5PPFG233dgV48sodnk3Sbc_tY_eoB6DiJ9KkqQ&s"
+    },
+    {
+      "id": "3f29",
+      "name": "Public Speaking",
+      "type": "positive",
+      "frequency": "Once a week",
+      "goal": "Thrice a week",
+      "priority": "medium",
+      "habitImpact": "Stage fright",
+      "goalImpact": "Communicate better with others",
+      "start": "2024-04-29",
+      "imagePath": "data:image/jpeg;base64,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"
+    },
+    {
+      "id": "d033",
+      "name": "Project presentation skills",
+      "type": "positive",
+      "frequency": "Once a month",
+      "goal": "Once a week",
+      "priority": "high",
+      "habitImpact": "Low chances of career success",
+      "goalImpact": "Improve career opportunities",
+      "start": "2024-06-24",
+      "imagePath": "https://slidemodel.com/wp-content/uploads/00_project-presentation-cover_alt.png"
+    }
+  ]
+}
