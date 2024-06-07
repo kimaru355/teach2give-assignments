@@ -13,11 +13,20 @@ export class Notes implements NotesService {
       const pool = mssql.connect(sqlConfig);
       const result = (await (await pool).request().execute("get_notes"))
         .recordset;
-      return {
-        success: true,
-        message: "Notes retrieved successfully",
-        data: result,
-      };
+      console.log(result);
+      if (result.length < 1) {
+        return {
+          success: true,
+          message: "No notes found",
+          data: null,
+        };
+      } else {
+        return {
+          success: true,
+          message: "Notes retrieved successfully",
+          data: result,
+        };
+      }
     } catch (error) {
       return {
         success: false,
@@ -33,11 +42,21 @@ export class Notes implements NotesService {
       const result = (
         await (await pool).request().input("id", id).execute("get_note")
       ).recordset;
-      return {
-        success: true,
-        message: "Note retrieved successfully",
-        data: result,
-      };
+      console.log(result);
+
+      if (result.length < 1) {
+        return {
+          success: false,
+          message: "Note not found",
+          data: null,
+        };
+      } else {
+        return {
+          success: true,
+          message: "Note retrieved successfully",
+          data: result,
+        };
+      }
     } catch (error) {
       return {
         success: false,
@@ -59,7 +78,7 @@ export class Notes implements NotesService {
           .input("created_at", note.created_at)
           .execute("create_note")
       ).rowsAffected;
-      if (results[0] == 1) {
+      if (results[0] > 0) {
         return {
           success: true,
           message: "Project created successfully",

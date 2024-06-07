@@ -32,7 +32,11 @@ export const getNote = async (
   const id = req.params.id;
   const notes = new Notes();
   const response = await notes.getNote(id);
-  return res.status(200).json(response);
+  if (!response.success) {
+    return res.status(404).json(response);
+  } else {
+    return res.status(200).json(response);
+  }
 };
 
 export const updateNote = async (
