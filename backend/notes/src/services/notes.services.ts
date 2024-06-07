@@ -138,12 +138,20 @@ export class Notes implements NotesService {
       const pool = mssql.connect(sqlConfig);
       const result = (
         await (await pool).request().input("id", id).execute("delete_note")
-      ).recordset;
-      return {
-        success: true,
-        message: "Note deleted successfully",
-        data: result,
-      };
+      ).rowsAffected;
+      if (result[0] < 1) {
+        return {
+          success: false,
+          message: "Error deleting note",
+          data: null,
+        };
+      } else {
+        return {
+          success: true,
+          message: "Note deleted successfully",
+          data: result,
+        };
+      }
     } catch (error) {
       return {
         success: false,
