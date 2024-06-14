@@ -1,1 +1,34 @@
-<p>create-note works!</p>
+<form #createNoteForm="ngForm" (ngSubmit)="createNote(createNoteForm.value)">
+  <label for="title">Title</label>
+  <input
+    type="text"
+    name="title"
+    id="title"
+    required
+    placeholder="Title..."
+    #title="ngModel"
+    ngModel
+  />
+  <div *ngIf="title.invalid && (title.dirty || title.touched)">
+    <p *ngIf="title.hasError('required')" style="color: red">
+      Title is required
+    </p>
+  </div>
+  <label for="content">Content</label>
+  <textarea
+    name="content"
+    id="content"
+    required
+    placeholder="More details..."
+    rows="8"
+    cols="40"
+    #content="ngModel"
+    ngModel
+  ></textarea>
+  <div *ngIf="content.invalid && (content.dirty || content.touched)">
+    <p *ngIf="content.hasError('required')" style="color: red">
+      Content is required
+    </p>
+  </div>
+  <button type="submit" #createNoteButton>Add Note</button>
+</form>

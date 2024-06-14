@@ -1,0 +1,12 @@
+<header>
+  <nav>
+    <h1>My Notes</h1>
+    <button (click)="isCreating = true">Create Note</button>
+  </nav>
+</header>
+<section *ngIf="isCreating" [ngClass]="isCreating ? 'creating' : ''">
+  <button class="close" (click)="isCreating = false">
+    <img src="icons/close_blue.svg" alt="close button" />
+  </button>
+  <app-create-note></app-create-note>
+</section>

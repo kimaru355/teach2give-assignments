@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 20rem;
+  background-color: white;
+  padding: 1rem;
+}
+label {
+  margin-top: 1rem;
+}
+form > input,
+form > textarea {
+  outline: solid 0.1rem gray;
+  padding: 0.5rem;
+  width: 100%;
+}
+button {
+  background-color: rgba(37, 212, 104, 0.6);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}

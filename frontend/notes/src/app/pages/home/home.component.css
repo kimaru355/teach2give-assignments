@@ -1,0 +1,8 @@
+div {
+  padding: 1rem;
+  border-radius: 0.2rem;
+}
+div:hover {
+  cursor: pointer;
+  background-color: rgba(56, 54, 54, 0.4);
+}

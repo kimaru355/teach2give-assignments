@@ -1,4 +1,4 @@
-import mssql from "mssql";
+import mssql, { MSSQLError } from "mssql";
 import dotenv from "dotenv";
 import { NotesService } from "../interfaces/NotesService";
 import { Res } from "../interfaces/Res";
@@ -52,7 +52,7 @@ export class Notes implements NotesService {
         return {
           success: true,
           message: "Note retrieved successfully",
-          data: result,
+          data: result[0],
         };
       }
     } catch (error) {
@@ -89,7 +89,7 @@ export class Notes implements NotesService {
           data: null,
         };
       }
-    } catch (error) {
+    } catch (error: any) {
       return {
         success: false,
         message: "Error creating note",

@@ -1,0 +1,21 @@
+main > button {
+  margin-left: 1rem;
+}
+section {
+  position: relative;
+}
+.actions {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
+.actions > button {
+  padding: 0.3rem 1.5rem;
+  font-size: 1.5rem;
+}
+.edit {
+  background-color: aquamarine;
+}
+.delete {
+  background-color: red;
+}
