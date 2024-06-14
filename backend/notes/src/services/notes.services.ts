@@ -13,7 +13,6 @@ export class Notes implements NotesService {
       const pool = mssql.connect(sqlConfig);
       const result = (await (await pool).request().execute("get_notes"))
         .recordset;
-      console.log(result);
       if (result.length < 1) {
         return {
           success: true,
@@ -42,7 +41,6 @@ export class Notes implements NotesService {
       const result = (
         await (await pool).request().input("id", id).execute("get_note")
       ).recordset;
-      console.log(result);
 
       if (result.length < 1) {
         return {
