@@ -6,8 +6,6 @@ import notesRouter from "./routes/notes";
 dotenv.config();
 const app = express();
 app.use(json());
-app.use(cors());
-
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   if (error) {
     console.error(error.message);
@@ -15,6 +13,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   }
   next();
 });
+app.use(cors());
 
 app.use("/notes", notesRouter);
 
