@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { CreateNoteComponent } from '../create-note/create-note.component';
-import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CreateNoteComponent, CommonModule],
+  imports: [CreateNoteComponent, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
-export class NavbarComponent {
-  isCreating: boolean = false;
-}
+export class NavbarComponent {}

@@ -31,9 +31,16 @@ export class NoteComponent {
   }
 
   deleteNote() {
+    const confirmDelete = confirm('Are you sure you want to delete this note?');
+    if (!confirmDelete) {
+      return;
+    }
     this.notesService.deleteNote(this.note_id).subscribe((response) => {
+      alert(response.message);
       if (response.success) {
-        this.router.navigate(['/']);
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 2000);
       }
     });
   }

@@ -4,7 +4,7 @@
   </button>
   <section *ngIf="note">
     <div class="actions">
-      <button class="edit">Edit</button>
+      <button class="edit" [routerLink]="'/update/' + note.id">Edit</button>
       <button class="delete" (click)="deleteNote()">Delete</button>
     </div>
     <h2>{{ note.title }}</h2>
