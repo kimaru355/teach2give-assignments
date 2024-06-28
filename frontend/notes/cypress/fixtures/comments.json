@@ -1,0 +1,31 @@
+{
+    "comments": [
+      {
+        "id": "bed7642b-2b19-4f7a-9a05-0cfd30adf3be",
+        "content": "Congratulations",
+        "postId": "3b582715-e98f-449d-a335-519874e56f53",
+        "authorId": "a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d",
+        "createdAt": "2024-06-18T14:21:40.792Z",
+        "updatedAt": "2024-06-18T14:21:40.792Z",
+        "authorName": "Jane Doe"
+      },
+      {
+        "id": "b8d56673-ea46-4cb4-9be6-078011cb430f",
+        "content": "Well done Jane. Well deserved",
+        "postId": "3b582715-e98f-449d-a335-519874e56f53",
+        "authorId": "65070489-9f8d-41a9-ab43-c191fa4d07bd",
+        "createdAt": "2024-06-18T20:34:00.170Z",
+        "updatedAt": "2024-06-18T20:34:00.170Z",
+        "authorName": "Peter Salasya"
+      },
+      {
+        "id": "715be221-c6ba-47bb-8e92-cc253246e660",
+        "content": "Congratulations the new developer in town",
+        "postId": "3b582715-e98f-449d-a335-519874e56f53",
+        "authorId": "413531b4-035c-441e-8d42-b160b56fc8a6",
+        "createdAt": "2024-06-19T08:11:09.125Z",
+        "updatedAt": "2024-06-19T08:11:09.125Z",
+        "authorName": "Raymond Red"
+      }
+    ]
+  }
